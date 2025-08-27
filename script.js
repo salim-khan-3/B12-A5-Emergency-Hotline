@@ -79,7 +79,7 @@ for (const service of services) {
                     alt=""
                   />
                 </div>
-                <div class="text-2xl heart-button">
+                <div class="text-2xl heart-button cursor-pointer hover:p-1 hover:bg-[#e7dede] hover:text-[#000] rounded-full">
                   <i class="fa-regular fa-heart"></i>
                 </div>
               </div>
@@ -91,7 +91,7 @@ for (const service of services) {
                   <p class="text-xl text-[#5C5C5C] mt-1">${service.serviceType}</p>
                 </div>
                 <div class="my-6">
-                  <p class="text-[32px] font-bold text-[#111111]">${service.number}</p>
+                  <p class="text-[32px] font-bold text-[#111111] service-number">${service.number}</p>
                   <span
                     class="bg-[#F2F2F2] badge px-4 py-[6px] rounded-full mt-1"
                     >${service.category}</span
@@ -99,7 +99,7 @@ for (const service of services) {
                 </div>
                 <div class="card-actions justify-end">
                   <button
-                    class="btn btn-neutral btn-outline text-[#5C5C5C] cursor-pointer text-[16px] border-[#5C5C5C] flex items-center py-4 flex-1 rounded-[8px] hover:text-[#fff]"
+                    class="btn btn-neutral copy-btn btn-outline text-[#5C5C5C] cursor-pointer text-[16px] border-[#5C5C5C] flex items-center py-4 flex-1 rounded-[8px] hover:text-[#fff]"
                   >
                     <i class="fa-regular fa-copy"></i><span>Copy</span>
                   </button>
@@ -116,8 +116,16 @@ for (const service of services) {
 }
 
 let heartCounter = 0;
+let copyCounter = 0;
+
 const heartCount = document.getElementById('heartCount');
 const heartButton = document.querySelectorAll('.heart-button');
+
+const copyCountUpdate = document.getElementById('copyCount')
+const copyBtn = document.querySelectorAll('.copy-btn')
+
+
+
 
 for(const heartBtn of heartButton){
   heartBtn.addEventListener('click', function(){
@@ -125,4 +133,18 @@ for(const heartBtn of heartButton){
     heartCount.innerText = heartCounter;
   })
 }
+
+//! copy emergency number and copyCounter 
+for(const btn of copyBtn){
+  btn.addEventListener('click', function(e){
+    const card = e.target.closest(".bg-base-100"); 
+    const number = card.querySelector(".service-number").innerText; 
+    navigator.clipboard.writeText(number);
+    alert("Copied: " + number);
+    
+    copyCounter++;
+    copyCountUpdate.innerText = copyCounter;
+  })
+}
+
 
