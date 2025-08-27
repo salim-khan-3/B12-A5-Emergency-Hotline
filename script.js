@@ -79,7 +79,7 @@ for (const service of services) {
                     alt=""
                   />
                 </div>
-                <div class="text-2xl">
+                <div class="text-2xl heart-button">
                   <i class="fa-regular fa-heart"></i>
                 </div>
               </div>
@@ -114,3 +114,15 @@ for (const service of services) {
 
   cardContainer.appendChild(card);
 }
+
+let heartCounter = 0;
+const heartCount = document.getElementById('heartCount');
+const heartButton = document.querySelectorAll('.heart-button');
+
+for(const heartBtn of heartButton){
+  heartBtn.addEventListener('click', function(){
+    heartCounter++;
+    heartCount.innerText = heartCounter;
+  })
+}
+
