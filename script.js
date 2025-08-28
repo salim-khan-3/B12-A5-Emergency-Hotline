@@ -60,19 +60,22 @@ const services = [
     serviceType: "Bangladesh Railway",
     number: "163",
     category: "Travel",
-    icon: "./assets/emergency.png",
+    icon: "./assets/Bangladesh-Railway.png",
   },
 ];
 
 const cardContainer = document.getElementById("card-container");
+let index = 0;
 
 for (const service of services) {
   const card = document.createElement("div");
   card.classList = "bg-base-100 max-w-[436px] shadow-sm p-8";
 
+const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
+
   card.innerHTML = `
   <div class="flex justify-between items-center">
-                <div class="p-[14px] bg-[#FFE3E2] rounded-[16px]">
+                <div class="p-[14px] ${iconBgColor}  rounded-[16px]">
                   <img
                     class="w-8 h-8"
                     src="${service.icon}"
@@ -92,9 +95,9 @@ for (const service of services) {
                 </div>
                 <div class="my-6">
                   <p class="text-[32px] font-bold text-[#111111] service-number">${service.number}</p>
-                  <span
+                  <p
                     class="bg-[#F2F2F2] badge px-4 py-[6px] rounded-full mt-1"
-                    >${service.category}</span
+                    >${service.category}</p
                   >
                 </div>
                 <div class="card-actions justify-end">
@@ -109,6 +112,7 @@ for (const service of services) {
   `;
 
   cardContainer.appendChild(card);
+  index++
 }
 
 let heartCounter = 0;
@@ -162,7 +166,9 @@ for (const btn of callBtn) {
     coinCountElement.innerText = coinCounter;
 
     const now = new Date();
-    const currentTime = now.toLocaleTimeString();
+    const currentTime = now.toLocaleTimeString("en-US",{
+      timeZone: "Asia/Dhaka"
+    });
 
     alert(`Calling ${serviceName} at ${number}`);
 
