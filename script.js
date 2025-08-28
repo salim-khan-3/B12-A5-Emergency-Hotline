@@ -125,6 +125,7 @@ const callBtn = document.querySelectorAll(".call-btn");
 const coinCountElement = document.getElementById("coinCount");
 
 const historyList = document.getElementById("history-list");
+const clearHistoryBtn = document.getElementById('clear-history-btn')
 
 for (const heartBtn of heartButton) {
   heartBtn.addEventListener("click", function () {
@@ -184,3 +185,8 @@ for (const btn of callBtn) {
      historyList.appendChild(li);
   });
 }
+
+
+clearHistoryBtn.addEventListener('click',function(){
+  historyList.innerHTML = "";
+})
