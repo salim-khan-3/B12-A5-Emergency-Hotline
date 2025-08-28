@@ -98,14 +98,10 @@ for (const service of services) {
                   >
                 </div>
                 <div class="card-actions justify-end">
-                  <button
-                    class="btn btn-neutral copy-btn btn-outline text-[#5C5C5C] cursor-pointer text-[16px] border-[#5C5C5C] flex items-center py-4 flex-1 rounded-[8px] hover:text-[#fff]"
-                  >
+                  <button class="btn btn-neutral copy-btn btn-outline text-[#5C5C5C] cursor-pointer text-[16px] border-[#5C5C5C] flex items-center py-4 flex-1 rounded-[8px] hover:text-[#fff]">
                     <i class="fa-regular fa-copy"></i><span>Copy</span>
                   </button>
-                  <button
-                    class="btn bg-[#00A63E] text-[#fff] cursor-pointer text-[16px] rounded-[8px] py-4 flex items-center flex-1"
-                  >
+                  <button class="btn call-btn bg-[#00A63E] text-[#fff] cursor-pointer text-[16px] rounded-[8px] py-4 flex items-center flex-1">
                     <i class="fa-solid fa-phone"></i><span>Call</span>
                   </button>
                 </div>
@@ -117,34 +113,74 @@ for (const service of services) {
 
 let heartCounter = 0;
 let copyCounter = 0;
+let coinCounter = 100;
 
-const heartCount = document.getElementById('heartCount');
-const heartButton = document.querySelectorAll('.heart-button');
+const heartCount = document.getElementById("heartCount");
+const heartButton = document.querySelectorAll(".heart-button");
 
-const copyCountUpdate = document.getElementById('copyCount')
-const copyBtn = document.querySelectorAll('.copy-btn')
+const copyCountUpdate = document.getElementById("copyCount");
+const copyBtn = document.querySelectorAll(".copy-btn");
 
+const callBtn = document.querySelectorAll(".call-btn");
+const coinCountElement = document.getElementById("coinCount");
 
+const historyList = document.getElementById("history-list");
 
-
-for(const heartBtn of heartButton){
-  heartBtn.addEventListener('click', function(){
+for (const heartBtn of heartButton) {
+  heartBtn.addEventListener("click", function () {
     heartCounter++;
     heartCount.innerText = heartCounter;
-  })
+  });
 }
 
-//! copy emergency number and copyCounter 
-for(const btn of copyBtn){
-  btn.addEventListener('click', function(e){
-    const card = e.target.closest(".bg-base-100"); 
-    const number = card.querySelector(".service-number").innerText; 
+//! copy emergency number and copyCounter
+for (const btn of copyBtn) {
+  btn.addEventListener("click", function (e) {
+    const card = e.target.closest(".bg-base-100");
+    const number = card.querySelector(".service-number").innerText;
     navigator.clipboard.writeText(number);
     alert("Copied: " + number);
-    
+
     copyCounter++;
     copyCountUpdate.innerText = copyCounter;
-  })
+  });
 }
 
+for (const btn of callBtn) {
+  btn.addEventListener("click", function (e) {
+    const card = e.target.parentNode.parentNode.parentNode;
+    const serviceName = card.querySelector(".card-title").innerText;
+    const number = card.querySelector(".service-number").innerText;
 
+    if (coinCounter < 20) {
+      alert("Not enough coins to make a call!");
+      return;
+    }
+
+    coinCounter -= 20;
+    coinCountElement.innerText = coinCounter;
+
+    const now = new Date();
+    const currentTime = now.toLocaleTimeString();
+
+    alert(`Calling ${serviceName} at ${number}`);
+
+    const li = document.createElement("li");
+    li.classList =
+      "flex bg-[#FAFAFA] p-4 rounded-lg items-center justify-between mb-2";
+
+    li.innerHTML = `
+                <div>
+                  <h4 class="text-lg font-semibold text-[#111111]">
+                    ${serviceName}
+                  </h4>
+                  <p class="text-[#5C5C5C] text-lg mt-1">${number}</p>
+                </div>
+                <div>
+                  <p class="text-[#111111] text-lg">${currentTime}</p>
+                </div>
+     `;
+
+     historyList.appendChild(li);
+  });
+}
