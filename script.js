@@ -53,7 +53,7 @@ const services = [
     serviceType: "Brac",
     number: "16445",
     category: "NGO",
-    icon: "./assets/emergency.png",
+    icon: "./assets/brac.png",
   },
   {
     name: "Bangladesh Railway Helpline",
@@ -69,9 +69,9 @@ let index = 0;
 
 for (const service of services) {
   const card = document.createElement("div");
-  card.classList = "bg-base-100 max-w-[436px] shadow-sm p-8";
+  card.classList = "bg-base-100 w-full shadow-xl p-8 rounded-[12px]";
 
-const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
+  const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
 
   card.innerHTML = `
   <div class="flex justify-between items-center">
@@ -82,13 +82,13 @@ const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
                     alt=""
                   />
                 </div>
-                <div class="text-2xl heart-button cursor-pointer hover:p-1 hover:bg-[#e7dede] hover:text-[#000] rounded-full">
+                <div class="text-2xl heart-button cursor-pointer p-1 hover:bg-[#e7dede] hover:text-[#000] rounded-full">
                   <i class="fa-regular fa-heart"></i>
                 </div>
               </div>
               <div class="card-body p-0 gap-0">
                 <div>
-                  <h2 class="card-title font-bold text-2xl">
+                  <h2 class="card-title font-bold text-2xl mt-4">
                     ${service.name}
                   </h2>
                   <p class="text-xl text-[#5C5C5C] mt-1">${service.serviceType}</p>
@@ -96,7 +96,7 @@ const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
                 <div class="my-6">
                   <p class="text-[32px] font-bold text-[#111111] service-number">${service.number}</p>
                   <p
-                    class="bg-[#F2F2F2] badge px-4 py-[6px] rounded-full mt-1"
+                    class="bg-[#F2F2F2] badge px-4 py-4 rounded-full mt-1"
                     >${service.category}</p
                   >
                 </div>
@@ -112,7 +112,7 @@ const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
   `;
 
   cardContainer.appendChild(card);
-  index++
+  index++;
 }
 
 let heartCounter = 0;
@@ -129,7 +129,7 @@ const callBtn = document.querySelectorAll(".call-btn");
 const coinCountElement = document.getElementById("coinCount");
 
 const historyList = document.getElementById("history-list");
-const clearHistoryBtn = document.getElementById('clear-history-btn')
+const clearHistoryBtn = document.getElementById("clear-history-btn");
 
 for (const heartBtn of heartButton) {
   heartBtn.addEventListener("click", function () {
@@ -141,16 +141,18 @@ for (const heartBtn of heartButton) {
 //! copy emergency number and copyCounter
 for (const btn of copyBtn) {
   btn.addEventListener("click", function (e) {
-    const card = e.target.closest(".bg-base-100");
+    const card = e.target.parentNode.parentNode.parentNode;
     const number = card.querySelector(".service-number").innerText;
     navigator.clipboard.writeText(number);
-    alert("Copied: " + number);
+
+    alert("Number copied: " + number);
 
     copyCounter++;
     copyCountUpdate.innerText = copyCounter;
   });
 }
 
+//! call button functionality
 for (const btn of callBtn) {
   btn.addEventListener("click", function (e) {
     const card = e.target.parentNode.parentNode.parentNode;
@@ -166,15 +168,15 @@ for (const btn of callBtn) {
     coinCountElement.innerText = coinCounter;
 
     const now = new Date();
-    const currentTime = now.toLocaleTimeString("en-US",{
-      timeZone: "Asia/Dhaka"
+    const currentTime = now.toLocaleTimeString("en-US", {
+      timeZone: "Asia/Dhaka",
     });
 
-    alert(`Calling ${serviceName} at ${number}`);
+    alert(`📞 Calling ${serviceName} at ${number}`);
 
     const li = document.createElement("li");
     li.classList =
-      "flex bg-[#FAFAFA] p-4 rounded-lg items-center justify-between mb-2";
+      "flex bg-[#FAFAFA] p-4 rounded-lg items-center justify-between gap-4 mb-2";
 
     li.innerHTML = `
                 <div>
@@ -188,11 +190,10 @@ for (const btn of callBtn) {
                 </div>
      `;
 
-     historyList.appendChild(li);
+    historyList.appendChild(li);
   });
 }
 
-
-clearHistoryBtn.addEventListener('click',function(){
+clearHistoryBtn.addEventListener("click", function () {
   historyList.innerHTML = "";
-})
+});
