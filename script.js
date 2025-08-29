@@ -71,7 +71,7 @@ for (const service of services) {
   const card = document.createElement("div");
   card.classList = "bg-base-100 w-full shadow-xl p-8 rounded-[12px]";
 
-  const iconBgColor = index === 1 ? "bg-[#D1E8FF]" : "bg-[#FFE3E2]";
+  const iconBgColor = index === 1 ? "bg-[#DFEFFF]" : "bg-[#FFE3E2]";
 
   card.innerHTML = `
   <div class="flex justify-between items-center">
@@ -88,19 +88,19 @@ for (const service of services) {
               </div>
               <div class="card-body p-0 gap-0">
                 <div>
-                  <h2 class="card-title font-bold text-2xl mt-4">
+                  <h2 class="card-title hind-madurai-fonts font-bold text-2xl mt-4">
                     ${service.name}
                   </h2>
-                  <p class="text-xl text-[#5C5C5C] mt-1">${service.serviceType}</p>
+                  <p class="text-xl roboto-fonts text-[#5C5C5C] mt-1">${service.serviceType}</p>
                 </div>
                 <div class="my-6">
-                  <p class="text-[32px] font-bold text-[#111111] service-number">${service.number}</p>
+                  <p class="text-[32px] font-bold text-[#111111] roboto-fonts service-number">${service.number}</p>
                   <p
-                    class="bg-[#F2F2F2] badge px-4 py-4 rounded-full mt-1"
+                    class="bg-[#F2F2F2] hind-madurai-fonts badge px-4 py-4 rounded-full mt-1"
                     >${service.category}</p
                   >
                 </div>
-                <div class="card-actions justify-end">
+                <div class="card-actions justify-end roboto-fonts">
                   <button class="btn btn-neutral copy-btn btn-outline text-[#5C5C5C] cursor-pointer text-[16px] border-[#5C5C5C] flex items-center py-4 flex-1 rounded-[8px] hover:text-[#fff]">
                     <i class="fa-regular fa-copy"></i><span>Copy</span>
                   </button>
@@ -160,7 +160,7 @@ for (const btn of callBtn) {
     const number = card.querySelector(".service-number").innerText;
 
     if (coinCounter < 20) {
-      alert("Not enough coins to make a call!");
+      alert("❌ Not enough coins to make a call!");
       return;
     }
 
@@ -180,13 +180,13 @@ for (const btn of callBtn) {
 
     li.innerHTML = `
                 <div>
-                  <h4 class="text-lg font-semibold text-[#111111]">
+                  <h4 class="text-lg font-semibold inter-fonts text-[#111111]">
                     ${serviceName}
                   </h4>
-                  <p class="text-[#5C5C5C] text-lg mt-1">${number}</p>
+                  <p class="text-[#5C5C5C] hind-madurai-fonts text-lg mt-1">${number}</p>
                 </div>
                 <div>
-                  <p class="text-[#111111] text-lg">${currentTime}</p>
+                  <p class="text-[#111111] hind-madurai-fonts text-lg">${currentTime}</p>
                 </div>
      `;
 

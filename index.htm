@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emergency Hotline Service</title>
-    <link rel="shortcut icon" href="./assets/logo-dark.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/logo-dark.png"
+      type="image/x-icon"
+    />
 
     <!-- font awesome cdn  -->
     <link
@@ -15,14 +19,31 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- google fonts  -->
+    <!-- google fonts inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Manrope:wght@200..800&family=Outfit:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
 
+    <!-- google fonts hind madurai  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- google fonts Roboto  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
     <!-- tailwind and daisyui cdn  -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
@@ -34,7 +55,7 @@
   <body class="bg-[rgba(65,255,107,0.1)]">
     <header class="bg-[#fff]">
       <nav
-        class="max-w-[1800px] mx-auto flex flex-col md:flex-row items-center justify-between py-4 px-4 md:px-4"
+        class="max-w-[1800px] mx-auto flex flex-col md:flex-row items-center justify-between py-4 px-4 md:px-4 inter-fonts"
       >
         <div class="logo-container flex items-center gap-2 mb-4 md:mb-0">
           <div class="img">
@@ -49,9 +70,7 @@
             </h2>
           </div>
         </div>
-        <div
-          class="right-copy-part flex items-center gap-2 sm:gap-4"
-        >
+        <div class="right-copy-part flex items-center gap-2 sm:gap-4">
           <div
             class="bg-[rgba(65,255,107,0.1)] rounded-[50px] py-3 px-5 flex items-center gap-2"
           >
@@ -78,7 +97,7 @@
 
     <!-- hero section  -->
     <section
-      class="bg-gradient-to-r from-[#013223] via-[#006747] to-[#013223] p-6 text-white"
+      class="bg-gradient-to-r from-[#013223] via-[#006747] to-[#013223] p-6 text-white hind-madurai-fonts"
     >
       <div class="flex items-center justify-center flex-col gap-3">
         <div>
@@ -94,7 +113,7 @@
       </div>
     </section>
 
-    <main  class="pt-12 md:pt-12 md:px-4 md:pb-12">
+    <main class="pt-12 md:pt-12 md:px-4 md:pb-12">
       <section class="emergency-number-section">
         <div
           class="max-w-[1800px] mx-4 flex flex-col lg:mx-auto lg:flex-row gap-[30px]"
@@ -102,26 +121,28 @@
           <div
             id="card-container"
             class="card-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:mx-auto gap-[30px]"
-          >
-            
-          </div>
+          ></div>
 
           <div class="p-6 bg-white flex-1 rounded-[12px]">
-            <div class="call-history flex items-center justify-between gap-4 mb-4">
+            <div
+              class="call-history flex items-center justify-between gap-4 mb-4"
+            >
               <div class="flex items-center gap-2">
                 <i class="fa-regular fa-clock text-2xl"></i>
-                <p class="font-medium text-[20px] text-[#111111]">
+                <p class="font-medium roboto-fonts text-[20px] text-[#111111]">
                   Call History
                 </p>
               </div>
               <div>
-                <button id="clear-history-btn" class="btn py-4 px-9 rounded-[50px] bg-[#00A63E] font-semibold text-[#fff]">
+                <button
+                  id="clear-history-btn"
+                  class="btn py-4 px-9 rounded-[50px] inter-fonts bg-[#00A63E] font-semibold text-[#fff]"
+                >
                   Clear
                 </button>
               </div>
             </div>
-            <ol id="history-list" class="all-call-details list-none">
-            </ol>
+            <ol id="history-list" class="all-call-details list-none"></ol>
           </div>
         </div>
       </section>
